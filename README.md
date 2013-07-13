@@ -3,5 +3,5 @@ BackupManager
 
 Description
 
-Program written in java to save important files in whatever system files
+Program written in java to save important files in any file system 
 
