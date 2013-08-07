@@ -5,14 +5,14 @@ import com.sun.jndi.toolkit.url.Uri;
 
 public abstract class AbstractFile {
     private String uri;
-    private ReaderFile reader;
-    private WriterFile writer;
+    private FileReader reader;
+    private FileWriter writer;
 
     public String getUri() {
         return uri;
     }
 
-    public AbstractFile(String uri,ReaderFile reader, WriterFile writer) {
+    public AbstractFile(String uri,FileReader reader, FileWriter writer) {
         this.uri = uri;
         this.reader = reader;
         this.writer = writer;
@@ -25,6 +25,8 @@ public abstract class AbstractFile {
     public byte[] read(byte[] buff){
         return reader.readFile(uri, buff);
     }
+    
+    public abstract long lengthFile();
     
     public abstract boolean isDirectory();
     

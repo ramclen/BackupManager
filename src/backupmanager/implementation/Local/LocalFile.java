@@ -2,13 +2,10 @@ package backupmanager.implementation.Local;
 
 import backupmanager.model.FileList;
 import backupmanager.model.FileSystem.AbstractFile;
-import backupmanager.model.FileSystem.ReaderFile;
-import backupmanager.model.FileSystem.WriterFile;
-import com.sun.jndi.toolkit.url.Uri;
 import java.io.File;
 
 public class LocalFile extends AbstractFile{
-
+    
     public LocalFile(String uri) {
         super(uri, new LocalFileReader(), new LocalFileWriter());
     }
@@ -31,8 +28,13 @@ public class LocalFile extends AbstractFile{
     public long lastModified() {
         return new File(getUri()).lastModified();
     }
+
+    @Override
+    public long lengthFile() {
+        return new File(getUri()).length();
+    }
     
-    public LocalFile toLocalFile(File file){
+    private LocalFile toLocalFile(File file){
         return new LocalFile(file.getAbsoluteFile().toString());
     }
 }
